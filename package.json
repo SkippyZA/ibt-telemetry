@@ -1,12 +1,12 @@
 {
   "name": "ibt-telemetry",
-  "version": "0.0.1",
-  "description": "iRacing telemetry consumer",
+  "version": "0.0.0",
+  "description": "iRacing ibt parser",
   "main": "lib/index.js",
   "author": "Steven Inskip",
   "license": "MIT",
   "scripts": {
-    "compile": "babel -d lib/ src/",
+    "compile": "npm run lint && babel -d lib/ src/",
     "lint": "standard -v \"src/**/*.js\"",
     "prepublish": "npm run compile"
   },

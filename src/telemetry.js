@@ -5,7 +5,13 @@ import TelemetrySample from './sample'
 
 const variableHeaders = new WeakMap()
 
+/**
+ * iRacing Telemetry
+ */
 export default class Telemetry {
+  /**
+   * Telemetry constructor.
+   */
   constructor (telemetryHeader, diskSubHeader, sessionInfo, varHeaders, fd) {
     this.headers = telemetryHeader
     this.diskHeaders = diskSubHeader
@@ -15,6 +21,9 @@ export default class Telemetry {
     variableHeaders.set(this, varHeaders)
   }
 
+  /**
+   * Telemetry variable headers.
+   */
   get varHeaders () {
     return variableHeaders.get(this)
   }
@@ -34,9 +43,9 @@ export default class Telemetry {
     return `${accountId}-${sessionId}-${subSessionId}`
   }
 
-/**
-* Telemetry samples generator.
-*/
+  /**
+   * Telemetry samples generator.
+   */
   * samples () {
     let hasSample = true
     let count = 0
