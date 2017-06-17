@@ -1,0 +1,25 @@
+{
+  "name": "ibt-telemetry",
+  "version": "0.0.1",
+  "description": "iRacing telemetry consumer",
+  "main": "lib/index.js",
+  "author": "Steven Inskip",
+  "license": "MIT",
+  "scripts": {
+    "compile": "babel -d lib/ src/",
+    "lint": "standard -v \"src/**/*.js\"",
+    "prepublish": "npm run compile"
+  },
+  "dependencies": {
+    "js-yaml": "^3.8.4",
+    "ramda": "^0.24.1",
+    "rxjs": "^5.4.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "standard": "^10.0.2"
+  }
+}
