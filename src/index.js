@@ -1,3 +1,6 @@
+/**
+ * iRacing ibt telemetry parser.
+ */
 import Telemetry from './telemetry'
 import Sample from './sample'
 import readFileToBuffer from './utils/read-file-to-buffer'
