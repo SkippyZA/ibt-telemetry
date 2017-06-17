@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- '7'
+deploy:
+  provider: npm
+  email: inskips@gmail.com
+  api_key:
+    secure: Z7oDYeS6lQC2GIkZ66cm1dfq0sC78ZSYjiVTW1zUhCMKaXUYRiGFQpq4oMdrSQOTKOD+zCFKHxfSgNCxklBFrrqb1KRFS25A+rhyFcidHC+Mn98xGU2l4sT33uyS5kgPPvM12O4fyiLv2XnNk016c727YZ2Zc+Q0n3yL/BwxRXYhW0uBMIbB7aLaE40fNKSMwsEqTV2FQ7UefmkWSZSRF3YAu1dko2mgxvEuhatGctcgTBea6ZN/ZvsIpW3/TDincLksTwwQzesGGD6hYKtgLbk+XaxadCL2GH/QrPOsXUGqHVR4g6Ap+5u2HXlQQ+xR5McjkMz79K/F4pLbvs13SQ6/9nlJCTcPRApep6bXd87b//B3up6CJAc9jvQjYh6cuRWmdRuhStPHWdIuAFuruVhRsF5ym0pBmPr9W1b4oDAwRj2bH5Xtb1MYT4RUSPkBe6sM0ZiAjcaGH//Lg7DaYGoXwB/7Ij9R9jG4Z0H88esJGgFcN6WNHUiGMqkeHh3gdW9RRKBZ7nwQXZpnsfJEFg3R3zUfavwxgrdBFHUQN26POyk6sfFiB8XbaW0urMMW80qMmP3f4GdRCm871mpaNY2LrJqhWdSh8TzKNsrkIgfn5JiGmiwn9rXOL+1kkArDpQ37j8G+yrCsxEGWMpTfSEAl4+lvK3b4z0HOl35PoC4=
+  on:
+    tags: true
+    repo: SkippyZA/ibt-telemetry

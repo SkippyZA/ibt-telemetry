@@ -1,0 +1,11 @@
+{
+  "github": {
+    "release": true,
+    "releaseName": "Release %s"
+  },
+  "npm": {
+    "publish": false,
+    "private": true
+  },
+  "changelogCommand": "git log --pretty=format:'* %s (%h)' [REV_RANGE]"
+}
