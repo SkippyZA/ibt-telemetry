@@ -2,9 +2,19 @@
   "name": "ibt-telemetry",
   "version": "0.0.0",
   "description": "iRacing ibt parser",
-  "main": "lib/index.js",
+  "keywords": [
+    "iracing",
+    "irsdk",
+    "ibt",
+    "telemetry"
+  ],
   "author": "Steven Inskip",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SkippyZA/ibt-telemetry.git"
+  },
+  "main": "lib/index.js",
   "scripts": {
     "compile": "npm run lint && babel -d lib/ src/",
     "lint": "standard -v \"src/**/*.js\"",
