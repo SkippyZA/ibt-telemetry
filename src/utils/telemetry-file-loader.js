@@ -1,5 +1,5 @@
 import fs from 'fs'
-import R from 'rambda'
+import R from 'ramda'
 import { SIZE_IN_BYTES as HEADER_SIZE_IN_BYTES, TelemetryHeader } from '../headers/telemetry-header'
 import { SIZE_IN_BYTES as DISK_SUB_HEADER_SIZE_IN_BYTES, DiskSubHeader } from '../headers/disk-sub-header'
 import { SIZE_IN_BYTES as VAR_HEADER_SIZE_IN_BYTES, VarHeader } from '../headers/var-header'
