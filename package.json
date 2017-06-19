@@ -1,6 +1,6 @@
 {
   "name": "ibt-telemetry",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "iRacing ibt parser",
   "keywords": [
     "iracing",
