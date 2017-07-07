@@ -14,6 +14,12 @@ no requirements on any DLL or Windows library making this completely capable of 
 ```javascript
 const pathToIbt = '/path/to/telemetry.ibt'
 const telemetry = Telemetry.fromFile(pathToIbt)
+
+const telemetryId = telemetry.uniqueId()
+// telemetryId = "188953-12312494-123910230"
+
+const sessionInfo = telemetry.sessionInfo
+// sessionInfo = {}
 ```
 
 ## Reading telemetry update samples
@@ -21,8 +27,37 @@ const telemetry = Telemetry.fromFile(pathToIbt)
 #### Generator
 ```javascript
 foreach (sample in telemetry.samples()) {
-  // Use sample
-}
+  const speed = sample.getParam('speed')
+  // speed = {
+  //   name: "Speed",
+  //   description: "GPS vehicle speed",
+  //   value: 200.32943,
+  //   unit: "m/s"
+  // }
+  
+  const sampleJson = sample.toJSON()
+  // sampleJson = {
+  //   "AirTemp": {
+  //     "unit": "C",
+  //     "value": 25.55555534362793
+  //   },
+  //   "Alt": {
+  //     "unit": "m",
+  //     "value": 42.163856506347656
+  //   },
+  //   "Brake": {
+  //     "unit": "%",
+  //     "value": 1
+  //   },
+  //   "BrakeRaw": {
+  //     "unit": "%",
+  //     "value": 0
+  //   },
+  //   "CFshockDefl": {
+  //     "unit": "m",
+  //     "value": 0.04878242313861847
+  //   }
+  // }
 ```
 
 #### Rx.JS
