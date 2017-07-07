@@ -1,10 +1,10 @@
 const SIZE_IN_BYTES = 112
 
 /**
-* iRacing Telemtry Header
-*
-* Total Size: 112 bytes
-*/
+ * iRacing Telemtry Header
+ *
+ * Total Size: 112 bytes
+ */
 class TelemetryHeader {
   constructor (parts) {
     this.version = parts[0]
@@ -25,9 +25,9 @@ class TelemetryHeader {
     this._parts = parts.slice(10)
   }
 
-/**
-* Create an instance of TelemetryHeader from the contents of a buffer.
-*/
+  /**
+   * Create an instance of TelemetryHeader from the contents of a buffer.
+   */
   static fromBuffer (buf) {
     const telemetryPartsFromBuffer = (buffer, size = 4, start = 0, accum = []) => {
       const bufferLength = buffer.length

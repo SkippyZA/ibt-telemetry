@@ -1,29 +1,29 @@
 const SIZE_IN_BYTES = 32
 
 /**
-* Sub header used when writing telemetry to disk
-*
-* Total size: 32 bytes
-*/
+ * Sub header used when writing telemetry to disk
+ *
+ * Total size: 32 bytes
+ */
 class DiskSubHeader {
-/**
-* DiskSubHeader constructor.
-*
-* params = {
-*  startDate,
-*  startTime,
-*  endTime,
-*  lapCount,
-*  recordCount
-* }
-*/
+  /**
+   * DiskSubHeader constructor.
+   *
+   * params = {
+   *  startDate,
+   *  startTime,
+   *  endTime,
+   *  lapCount,
+   *  recordCount
+   * }
+   */
   constructor (params) {
     Object.assign(this, params)
   }
 
-/**
-* Instantiate an instance of DiskSubHeader using the contents of the supplied buffer.
-*/
+  /**
+   * Instantiate an instance of DiskSubHeader using the contents of the supplied buffer.
+   */
   static fromBuffer (buffer) {
     return new DiskSubHeader({
       startDate: buffer.slice(0, 8).readFloatLE(),

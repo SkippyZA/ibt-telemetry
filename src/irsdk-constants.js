@@ -32,7 +32,7 @@ const variables = {
     }
   },
 
-// bit fields
+  // bit fields
   irsdk_EngineWarnings: {
     irsdk_waterTempWarning: 0x01,
     irsdk_fuelPressureWarning: 0x02,
@@ -42,9 +42,9 @@ const variables = {
     irsdk_revLimiterActive: 0x20
   },
 
-// global flags
+  // global flags
   irsdk_Flags: {
-// global flags
+    // global flags
     irsdk_checkered: 0x00000001,
     irsdk_white: 0x00000002,
     irsdk_green: 0x00000004,
@@ -62,21 +62,21 @@ const variables = {
     irsdk_caution: 0x00004000,
     irsdk_cautionWaving: 0x00008000,
 
-// drivers black flags
+    // drivers black flags
     irsdk_black: 0x00010000,
     irsdk_disqualify: 0x00020000,
     irsdk_servicible: 0x00040000, // car is allowed service (not a flag)
     irsdk_furled: 0x00080000,
     irsdk_repair: 0x00100000,
 
-// start lights
+    // start lights
     irsdk_startHidden: 0x10000000,
     irsdk_startReady: 0x20000000,
     irsdk_startSet: 0x40000000,
     irsdk_startGo: 0x80000000
   },
 
-// status
+  // status
   irsdk_TrkLoc: {
     irsdk_NotInWorld: -1,
     irsdk_OffTrack: 0,
@@ -133,7 +133,7 @@ const variables = {
     irsdk_IsSessionScreen: 0x0001, // the camera tool can only be activated if viewing the session screen (out of car)
     irsdk_IsScenicActive: 0x0002, // the scenic camera is active (no focus car)
 
-// these can be changed with a broadcast message
+    // these can be changed with a broadcast message
     irsdk_CamToolActive: 0x0004,
     irsdk_UIHidden: 0x0008,
     irsdk_UseAutoShotSelection: 0x0010,

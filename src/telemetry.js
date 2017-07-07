@@ -1,9 +1,11 @@
 import fs from 'fs'
 import yaml from 'js-yaml'
 
-import TelemetrySample from './sample'
+import TelemetrySample from './telemetry-sample'
+import telemetryFileLoader from './utils/telemetry-file-loader'
 
 const variableHeaders = new WeakMap()
+const fileDescriptor = new WeakMap()
 
 /**
  * iRacing Telemetry
@@ -16,9 +18,19 @@ export default class Telemetry {
     this.headers = telemetryHeader
     this.diskHeaders = diskSubHeader
     this.sessionInfo = yaml.safeLoad(sessionInfo)
-    this._fd = fd
 
+    fileDescriptor.set(this, fd)
     variableHeaders.set(this, varHeaders)
+  }
+
+  /**
+   * Instantiate a Telemetry instance from the contents of an ibt file
+   *
+   * @param file path to *.ibt file
+   * @return Telemetry instance of telemetry
+   */
+  static fromFile (file) {
+    return telemetryFileLoader(file)
   }
 
   /**
@@ -50,12 +62,13 @@ export default class Telemetry {
     let hasSample = true
     let count = 0
 
+    const fd = fileDescriptor.get(this)
     const length = this.headers.bufLen
     const buffer = Buffer.alloc(length)
 
     while (hasSample) {
       const start = this.headers.bufOffset + (count++ * length)
-      const bytesRead = fs.readSync(this._fd, buffer, 0, length, start)
+      const bytesRead = fs.readSync(fd, buffer, 0, length, start)
 
       if (bytesRead !== length) {
         hasSample = false
