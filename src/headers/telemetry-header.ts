@@ -38,7 +38,7 @@ export class TelemetryHeader {
   public readonly bufLen: number
   public readonly bufOffset: number
 
-  constructor (parts: Buffer) {
+  constructor (parts: number[]) {
     this.version = parts[0]
     this.status = parts[1]
     this.tickRate = parts[2]
@@ -59,7 +59,7 @@ export class TelemetryHeader {
    * Create an instance of TelemetryHeader from the contents of a buffer.
    */
   static fromBuffer (buf: Buffer): TelemetryHeader {
-    const telemetryPartsFromBuffer = (buffer: Buffer, size = 4, start = 0, accum = []) => {
+    const telemetryPartsFromBuffer = (buffer: Buffer, size = 4, start = 0, accum: number[] = []): number[] => {
       const bufferLength = buffer.length
 
       if (bufferLength % size !== 0) {
@@ -70,6 +70,7 @@ export class TelemetryHeader {
         return accum
       } else {
         const a = buffer.slice(start, start + size).readInt32LE(0)
+
         return telemetryPartsFromBuffer(buffer, size, start + size, [ ...accum, a ])
       }
     }

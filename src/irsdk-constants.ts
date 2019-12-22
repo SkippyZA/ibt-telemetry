@@ -1,5 +1,59 @@
 /* eslint-disable @typescript-eslint/camelcase */
-export const IrsdkConstants = {
+export interface IrsdkConstants {
+  varType: { [key: string]: VarType }
+  irsdk_EngineWarnings: IrsdkEngineWarnings
+  irsdk_Flags: { [key: string]: number }
+  irsdk_TrkLoc: IrsdkTrkLOC
+  irsdk_TrkSurf: { [key: string]: number }
+  irsdk_SessionState: IrsdkSessionState
+  irsdk_CameraState: { [key: string]: number }
+  irsdk_PitSvFlags: IrsdkPitSvFlags
+}
+
+export interface IrsdkEngineWarnings {
+  irsdk_waterTempWarning: number
+  irsdk_fuelPressureWarning: number
+  irsdk_oilPressureWarning: number
+  irsdk_engineStalled: number
+  irsdk_pitSpeedLimiter: number
+  irsdk_revLimiterActive: number
+}
+
+export interface IrsdkPitSvFlags {
+  irsdk_LFTireChange: number
+  irsdk_RFTireChange: number
+  irsdk_LRTireChange: number
+  irsdk_RRTireChange: number
+  irsdk_FuelFill: number
+  irsdk_WindshieldTearoff: number
+  irsdk_FastRepair: number
+}
+
+export interface IrsdkSessionState {
+  irsdk_StateInvalid: number
+  irsdk_StateGetInCar: number
+  irsdk_StateWarmup: number
+  irsdk_StateParadeLaps: number
+  irsdk_StateRacing: number
+  irsdk_StateCheckered: number
+  irsdk_StateCoolDown: number
+}
+
+export interface IrsdkTrkLOC {
+  irsdk_NotInWorld: number
+  irsdk_OffTrack: number
+  irsdk_InPitStall: number
+  irsdk_AproachingPits: number
+  irsdk_OnTrack: number
+}
+
+export interface VarType {
+  size: number
+  iracingType: string
+  jsBufferMethod: string
+}
+
+export const constants: IrsdkConstants = {
   varType: {
     0: {
       size: 1,

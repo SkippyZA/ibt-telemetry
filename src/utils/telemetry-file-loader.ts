@@ -4,7 +4,7 @@ import { SIZE_IN_BYTES as HEADER_SIZE_IN_BYTES, TelemetryHeader } from '../heade
 import { SIZE_IN_BYTES as DISK_SUB_HEADER_SIZE_IN_BYTES, DiskSubHeader } from '../headers/disk-sub-header'
 import { SIZE_IN_BYTES as VAR_HEADER_SIZE_IN_BYTES, VarHeader } from '../headers/var-header'
 import { readFileToBuffer } from '../utils/read-file-to-buffer'
-import Telemetry from '../telemetry'
+import { Telemetry } from '../telemetry'
 
 // Open the data file and return it's file descriptor as a promise
 const openDataFile = (dataFile: string): Promise<number> => new Promise((resolve, reject) => {

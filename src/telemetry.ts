@@ -10,7 +10,7 @@ import { VarHeader } from './headers/var-header'
 /**
  * iRacing Telemetry
  */
-export default class Telemetry {
+export class Telemetry {
   private sessionInfo: any
 
   /**
