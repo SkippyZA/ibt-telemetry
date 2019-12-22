@@ -1,9 +1,16 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
+    "allowJs": false,
     "declaration": true,
-    "outDir": "./dist"
+    "module": "commonjs",
+    "noLib": false,
+    "outDir": "./dist",
+    "removeComments": true,
+    "rootDir": "./src",
+    "sourceMap": true,
+    "strict": true,
+    "strictPropertyInitialization": false,
+    "target": "es2019"
   },
   "include": [
     "src/**/*"

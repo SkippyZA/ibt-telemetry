@@ -14,15 +14,16 @@
     "type": "git",
     "url": "https://github.com/SkippyZA/ibt-telemetry.git"
   },
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "compile": "npm run lint && babel -d lib/ src/",
+    "compile": "npm run lint && tsc -p tsconfig.build.json",
     "lint": "eslint '**/*.{js,ts}'",
     "prepublish": "npm run compile"
   },
   "dependencies": {
-    "js-yaml": "^3.8.4",
-    "ramda": "^0.24.1",
+    "js-yaml": "3.13.1",
+    "ramda": "0.26.1",
     "rxjs": "^5.4.0"
   },
   "devDependencies": {
