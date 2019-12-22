@@ -17,7 +17,7 @@
   "main": "lib/index.js",
   "scripts": {
     "compile": "npm run lint && babel -d lib/ src/",
-    "lint": "standard -v \"src/**/*.js\"",
+    "lint": "eslint '**/*.{js,ts}'",
     "prepublish": "npm run compile"
   },
   "dependencies": {
@@ -26,10 +26,16 @@
     "rxjs": "^5.4.0"
   },
   "devDependencies": {
+    "@types/js-yaml": "3.12.1",
+    "@types/node": "12.12.21",
+    "@types/ramda": "0.26.38",
+    "@typescript-eslint/eslint-plugin": "2.12.0",
+    "@typescript-eslint/parser": "2.12.0",
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "standard": "^10.0.2"
+    "eslint": "6.8.0",
+    "typescript": "3.7.4"
   }
 }
