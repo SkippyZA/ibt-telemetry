@@ -1,4 +1,5 @@
-const variables = {
+/* eslint-disable @typescript-eslint/camelcase */
+export const IrsdkConstants = {
   varType: {
     0: {
       size: 1,
@@ -154,5 +155,3 @@ const variables = {
     irsdk_FastRepair: 0x0040
   }
 }
-
-export default variables

@@ -1,24 +1,20 @@
-import Irsdk from './irsdk-constants'
-import R from 'ramda'
+import { IrsdkConstants } from './irsdk-constants'
+import { prop, compose, pick, assoc } from 'ramda'
+import { VarHeader } from './headers/var-header'
 
-const variableHeaders = new WeakMap()
+export class TelemetrySample {
+  constructor (private buff: Buffer, private varHeaders: VarHeader[]) {}
 
-export default class TelemetrySample {
-  constructor (buff, varHeaders) {
-    this._buff = buff
-    variableHeaders.set(this, varHeaders)
-  }
-
-  getParam (sampleVariableName) {
-    const header = variableHeaders.get(this)
+  getParam (sampleVariableName: string) {
+    const header = this.varHeaders
       .find(h => h.name.toLowerCase() === sampleVariableName.toLowerCase())
 
     if (!header) {
       return null
     }
 
-    const variable = Irsdk.varType[header.type]
-    const valueBuffer = this._buff.slice(header.offset, header.offset + variable.size)
+    const variable = IrsdkConstants.varType[header.type]
+    const valueBuffer = this.buff.slice(header.offset, header.offset + variable.size)
 
     return {
       name: header.name,
@@ -30,10 +26,10 @@ export default class TelemetrySample {
 
   toJSON () {
     const getParam = x => this.getParam(x)
-    const getName = R.prop('name')
-    const valueFromHeader = R.compose(R.pick(['value', 'unit']), getParam, getName)
+    const getName = prop('name')
+    const valueFromHeader = compose(pick([ 'value', 'unit' ]), getParam, getName)
 
-    return variableHeaders.get(this)
-      .reduce((accum, header) => R.assoc(getName(header), valueFromHeader(header), accum), {})
+    return this.varHeaders
+      .reduce((accum, header) => assoc(getName(header), valueFromHeader(header), accum), {})
   }
 }

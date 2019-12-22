@@ -1,26 +1,29 @@
-import fs from 'fs'
-import yaml from 'js-yaml'
+import { readSync } from 'fs'
+import { safeLoad as safeLoadYaml } from 'js-yaml'
 
-import TelemetrySample from './telemetry-sample'
-import telemetryFileLoader from './utils/telemetry-file-loader'
-
-const variableHeaders = new WeakMap()
-const fileDescriptor = new WeakMap()
+import { TelemetrySample } from './telemetry-sample'
+import { telemetryFileLoader } from './utils/telemetry-file-loader'
+import { TelemetryHeader } from './headers/telemetry-header'
+import { DiskSubHeader } from './headers/disk-sub-header'
+import { VarHeader } from './headers/var-header'
 
 /**
  * iRacing Telemetry
  */
 export default class Telemetry {
+  private sessionInfo: any
+
   /**
    * Telemetry constructor.
    */
-  constructor (telemetryHeader, diskSubHeader, sessionInfo, varHeaders, fd) {
-    this.headers = telemetryHeader
-    this.diskHeaders = diskSubHeader
-    this.sessionInfo = yaml.safeLoad(sessionInfo)
-
-    fileDescriptor.set(this, fd)
-    variableHeaders.set(this, varHeaders)
+  constructor (
+    public readonly telemetryHeader: TelemetryHeader,
+    public readonly diskSubHeader: DiskSubHeader,
+    public readonly sessionInfoYaml: string,
+    public readonly varHeaders: VarHeader[],
+    private fd: number
+  ) {
+    this.sessionInfo = safeLoadYaml(sessionInfoYaml)
   }
 
   /**
@@ -29,15 +32,8 @@ export default class Telemetry {
    * @param file path to *.ibt file
    * @return Telemetry instance of telemetry
    */
-  static fromFile (file) {
+  static fromFile (file: string): Promise<Telemetry> {
     return telemetryFileLoader(file)
-  }
-
-  /**
-   * Telemetry variable headers.
-   */
-  get varHeaders () {
-    return variableHeaders.get(this)
   }
 
   /**
@@ -61,14 +57,13 @@ export default class Telemetry {
   * samples () {
     let hasSample = true
     let count = 0
+    const length = this.telemetryHeader.bufLen
 
-    const fd = fileDescriptor.get(this)
-    const length = this.headers.bufLen
     const buffer = Buffer.alloc(length)
 
     while (hasSample) {
-      const start = this.headers.bufOffset + (count++ * length)
-      const bytesRead = fs.readSync(fd, buffer, 0, length, start)
+      const start = this.telemetryHeader.bufOffset + (count++ * length)
+      const bytesRead = readSync(this.fd, buffer, 0, length, start)
 
       if (bytesRead !== length) {
         hasSample = false
