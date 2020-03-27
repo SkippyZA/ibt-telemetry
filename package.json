@@ -24,7 +24,7 @@
   "dependencies": {
     "js-yaml": "^3.8.4",
     "ramda": "^0.24.1",
-    "rxjs": "^5.4.0"
+    "rxjs": "^6.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
