@@ -8,6 +8,33 @@ export interface IrsdkConstants {
   irsdk_SessionState: IrsdkSessionState
   irsdk_CameraState: { [key: string]: number }
   irsdk_PitSvFlags: IrsdkPitSvFlags
+  irsdk_CarLeftRight: IrsdkCarLeftRight
+  irsdk_PitSvStatus: IrsdkPitServiceStatus
+}
+
+export interface IrsdkPitServiceStatus {
+  // status
+  irsdk_PitSvNone: number
+  irsdk_PitSvInProgress: number
+  irsdk_PitSvComplete: number
+
+  // errors
+  irsdk_PitSvTooFarLeft: number
+  irsdk_PitSvTooFarRight: number
+  irsdk_PitSvTooFarForward: number
+  irsdk_PitSvTooFarBack: number
+  irsdk_PitSvBadAngle: number
+  irsdk_PitSvCantFixThat: number
+}
+
+export interface IrsdkCarLeftRight {
+  irsdk_LROff: number
+  irsdk_LRClear: number        // no cars around us
+  irsdk_LRCarLeft: number      // there is a car to our left
+  irsdk_LRCarRight: number     // there is a car to our right
+  irsdk_LRCarLeftRight: number // there are cars on each side
+  irsdk_LR2CarsLeft: number    // there are two cars to our left
+  irsdk_LR2CarsRight: number   // there are two cars to our right
 }
 
 export interface IrsdkEngineWarnings {
