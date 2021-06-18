@@ -39,7 +39,8 @@ const variables = {
     irsdk_oilPressureWarning: 0x04,
     irsdk_engineStalled: 0x08,
     irsdk_pitSpeedLimiter: 0x10,
-    irsdk_revLimiterActive: 0x20
+    irsdk_revLimiterActive: 0x20,
+    irsdk_oilTempWarning: 0x40
   },
 
   // global flags
@@ -177,6 +178,20 @@ const variables = {
     irsdk_PitSvTooFarBack: 103,
     irsdk_PitSvBadAngle: 104,
     irsdk_PitSvCantFixThat: 105
+  },
+
+  irsdk_PaceMode: {
+    irsdk_PaceModeSingleFileStart: 0,
+    irsdk_PaceModeDoubleFileStart: 1,
+    irsdk_PaceModeSingleFileRestart: 2,
+    irsdk_PaceModeDoubleFileRestart: 3,
+    irsdk_PaceModeNotPacing: 4
+  },
+
+  irsdk_PaceFlags: {
+    irsdk_PaceFlagsEndOfLine: 0x01,
+    irsdk_PaceFlagsFreePass: 0x02,
+    irsdk_PaceFlagsWavedAround: 0x04
   }
 }
 
