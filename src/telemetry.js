@@ -55,26 +55,26 @@ export default class Telemetry {
     return `${accountId}-${sessionId}-${subSessionId}`
   }
 
-  /**
-   * Telemetry samples generator.
-   */
-  * samples () {
-    let hasSample = true
-    let count = 0
+//   /**
+//    * Telemetry samples generator.
+//    */
+//   * samples () {
+//     let hasSample = true
+//     let count = 0
 
-    const fd = fileDescriptor.get(this)
-    const length = this.headers.bufLen
-    const buffer = Buffer.alloc(length)
+//     const fd = fileDescriptor.get(this)
+//     const length = this.headers.bufLen
+//     const buffer = Buffer.alloc(length)
 
-    while (hasSample) {
-      const start = this.headers.bufOffset + (count++ * length)
-      const bytesRead = fs.readSync(fd, buffer, 0, length, start)
+//     while (hasSample) {
+//       const start = this.headers.bufOffset + (count++ * length)
+//       const bytesRead = fs.readSync(fd, buffer, 0, length, start)
 
-      if (bytesRead !== length) {
-        hasSample = false
-      } else {
-        yield new TelemetrySample(buffer, this.varHeaders)
-      }
-    }
-  }
+//       if (bytesRead !== length) {
+//         hasSample = false
+//       } else {
+//         yield new TelemetrySample(buffer, this.varHeaders)
+//       }
+//     }
+//   }
 }
