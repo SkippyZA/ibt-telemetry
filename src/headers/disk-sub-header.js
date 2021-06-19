@@ -1,39 +1,19 @@
-const SIZE_IN_BYTES = 32
-
-/**
- * Sub header used when writing telemetry to disk
- *
- * Total size: 32 bytes
- */
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.SIZE_IN_BYTES = 32;
 class DiskSubHeader {
-  /**
-   * DiskSubHeader constructor.
-   *
-   * params = {
-   *  startDate,
-   *  startTime,
-   *  endTime,
-   *  lapCount,
-   *  recordCount
-   * }
-   */
-  constructor (params) {
-    Object.assign(this, params)
-  }
-
-  /**
-   * Instantiate an instance of DiskSubHeader using the contents of the supplied buffer.
-   */
-  static fromBuffer (buffer) {
-    return new DiskSubHeader({
-      startDate: buffer.slice(0, 8).readFloatLE(),
-      startTime: buffer.slice(8, 16).readDoubleLE(),
-      endTime: buffer.slice(16, 24).readDoubleLE(),
-      lapCount: buffer.slice(24, 28).readInt32LE(),
-      recordCount: buffer.slice(28, 32).readInt32LE()
-    })
-  }
+    constructor(params) {
+        Object.assign(this, params);
+    }
+    static fromBuffer(buffer) {
+        return new DiskSubHeader({
+            startDate: buffer.slice(0, 8).readFloatLE(0),
+            startTime: buffer.slice(8, 16).readDoubleLE(0),
+            endTime: buffer.slice(16, 24).readDoubleLE(0),
+            lapCount: buffer.slice(24, 28).readInt32LE(0),
+            recordCount: buffer.slice(28, 32).readInt32LE(0)
+        });
+    }
 }
-
-export { SIZE_IN_BYTES, DiskSubHeader }
-export default DiskSubHeader
+exports.DiskSubHeader = DiskSubHeader;
+//# sourceMappingURL=disk-sub-header.js.map
