@@ -14,7 +14,7 @@
     "type": "git",
     "url": "https://github.com/SkippyZA/ibt-telemetry.git"
   },
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "compile": "npm run lint && babel -d lib/ src/",
     "lint": "standard -v \"src/**/*.js\"",
