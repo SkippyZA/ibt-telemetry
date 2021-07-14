@@ -11,7 +11,7 @@ import { VarHeader } from './headers/var-header'
  * iRacing Telemetry
  */
 export class Telemetry {
-  private sessionInfo: any
+  public sessionInfo: any
 
   /**
    * Telemetry constructor.
