@@ -10,6 +10,22 @@ export interface IrsdkConstants {
   irsdk_PitSvFlags: IrsdkPitSvFlags
   irsdk_CarLeftRight: IrsdkCarLeftRight
   irsdk_PitSvStatus: IrsdkPitServiceStatus
+  irsdk_PaceMode: IrsdkPaceMode
+  irsdk_PaceFlags: IrsdkPaceFlags
+}
+
+export interface IrsdkPaceMode {
+  irsdk_PaceModeSingleFileStart: number
+  irsdk_PaceModeDoubleFileStart: number
+  irsdk_PaceModeSingleFileRestart: number
+  irsdk_PaceModeDoubleFileRestart: number
+  irsdk_PaceModeNotPacing: number
+}
+
+export interface IrsdkPaceFlags {
+  irsdk_PaceFlagsEndOfLine: number
+  irsdk_PaceFlagsFreePass: number
+  irsdk_PaceFlagsWavedAround: number
 }
 
 export interface IrsdkPitServiceStatus {
@@ -44,6 +60,7 @@ export interface IrsdkEngineWarnings {
   irsdk_engineStalled: number
   irsdk_pitSpeedLimiter: number
   irsdk_revLimiterActive: number
+  irsdk_oilTempWarning: number
 }
 
 export interface IrsdkPitSvFlags {
@@ -121,7 +138,8 @@ export const constants: IrsdkConstants = {
     irsdk_oilPressureWarning: 0x04,
     irsdk_engineStalled: 0x08,
     irsdk_pitSpeedLimiter: 0x10,
-    irsdk_revLimiterActive: 0x20
+    irsdk_revLimiterActive: 0x20,
+    irsdk_oilTempWarning: 0x40
   },
 
   // global flags
@@ -259,5 +277,19 @@ export const constants: IrsdkConstants = {
     irsdk_PitSvTooFarBack: 103,
     irsdk_PitSvBadAngle: 104,
     irsdk_PitSvCantFixThat: 105
+  },
+
+  irsdk_PaceMode: {
+    irsdk_PaceModeSingleFileStart: 0,
+    irsdk_PaceModeDoubleFileStart: 1,
+    irsdk_PaceModeSingleFileRestart: 2,
+    irsdk_PaceModeDoubleFileRestart: 3,
+    irsdk_PaceModeNotPacing: 4
+  },
+
+  irsdk_PaceFlags: {
+    irsdk_PaceFlagsEndOfLine: 0x01,
+    irsdk_PaceFlagsFreePass: 0x02,
+    irsdk_PaceFlagsWavedAround: 0x04
   }
 }
