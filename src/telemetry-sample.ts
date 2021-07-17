@@ -1,4 +1,4 @@
-import { constants as IrsdkConstants } from './irsdk-constants'
+import { varType } from './constants'
 import { compose, pick, assoc } from 'ramda'
 import { VarHeader } from './headers/var-header'
 
@@ -25,7 +25,7 @@ export class TelemetrySample {
       return null
     }
 
-    const variable = IrsdkConstants.varType[header.type]
+    const variable = varType[header.type]
     const valueBuffer = this.buff.slice(header.offset, header.offset + variable.size)
 
     return {

@@ -1,18 +1,5 @@
 /**
  * iRacing ibt telemetry parser.
  */
-import { Telemetry } from './telemetry'
-import { TelemetrySample, TelemetryParamValue } from './telemetry-sample'
-import { readFileToBuffer } from './utils/read-file-to-buffer'
-import { telemetryFileLoader } from './utils/telemetry-file-loader'
-import { IrsdkConstants } from './irsdk-constants'
-
-export {
-  Telemetry,
-  Telemetry as default,
-  IrsdkConstants,
-  TelemetrySample,
-  readFileToBuffer,
-  telemetryFileLoader,
-  TelemetryParamValue
-}
+export { Telemetry } from './telemetry'
+export { TelemetrySample, TelemetryParamValue, TelemetrySampleProperty } from './telemetry-sample'
